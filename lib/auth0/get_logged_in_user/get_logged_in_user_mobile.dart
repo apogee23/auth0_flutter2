@@ -1,6 +1,7 @@
 import 'package:auth0_flutter/auth0_flutter.dart';
 import 'package:auth0_flutter2/auth0/init_auth0/init_auth0_mobile.dart';
 
+// Fetches authenticated user ID on mobile.
 Future<String?> getLoggedInUserId({
   required String auth0Domain,
   required String auth0ClientId,
