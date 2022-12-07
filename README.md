@@ -22,7 +22,7 @@ Follow the iOS and Android usage instructions in the [official Auth0 mobile pack
 
 ### Web
 
-For Web support add the Auth0 Javascript SPA (Single Page Application) library.
+Add the Auth0 Javascript SPA (Single Page Application) library.
 
 ```html
 <script src="https://cdn.auth0.com/js/auth0-spa-js/1.13/auth0-spa-js.production.js"></script>
