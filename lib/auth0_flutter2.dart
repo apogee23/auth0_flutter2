@@ -2,13 +2,12 @@ library auth0_flutter2;
 
 import 'package:auth0_flutter2/auth0/auth0.dart' as auth02;
 
-// Base class of the package which is always staticly referenced.
+/// Base class of the package which is always staticly referenced.
 class Auth0Flutter2 {
-  // Disables the platform override in order to use a manually registered
-  // ignore: comment_references
-  // [SharePlatform] for testing purposes.
-  // See https://github.com/flutter/flutter/issues/52267 for more details.
-  //
+  /// Disables the platform override in order to use a manually registered
+  /// ignore: comment_references
+  /// [SharePlatform] for testing purposes.
+  /// See https://github.com/flutter/flutter/issues/52267 for more details.
   Auth0Flutter2._();
 
   /// Sets the Auth0 Domain.
@@ -43,16 +42,17 @@ class Auth0Flutter2 {
     return instance._auth0ClientId!;
   }
 
-  // The instance of [Auth0Flutter2].
+  /// The instance of [Auth0Flutter2].
   static final Auth0Flutter2 instance = Auth0Flutter2._();
 
-  // The Auth0 domain of the application.
+  /// The Auth0 domain of the application.
   String? _auth0Domain;
-  // The Auth0 client ID of the application.
+
+  /// The Auth0 client ID of the application.
   String? _auth0ClientId;
 
-  // Fetches the currently authenticated user ID.
-  // Returns null if no user is authenticated.
+  /// Fetches the currently authenticated user ID.
+  /// Returns null if no user is authenticated.
   Future<String?> getLoggedInUserId() async {
     return await auth02.getLoggedInUserId(
       auth0Domain: auth0Domain,
@@ -60,8 +60,8 @@ class Auth0Flutter2 {
     );
   }
 
-  // If user is not authenticated, shows universal login.
-  // Returns user ID of logged in user.
+  /// If user is not authenticated, shows universal login.
+  /// Returns user ID of logged in user.
   Future<String?> loginUser({
     Future<void> Function()? afterLogin,
   }) async {
@@ -72,7 +72,7 @@ class Auth0Flutter2 {
     );
   }
 
-  // Logs out current user.
+  /// Logs out current user.
   Future<void> logoutUser() async {
     return auth02.logoutUser(
       auth0Domain: auth0Domain,
