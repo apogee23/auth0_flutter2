@@ -1,4 +1,4 @@
-// Stub method for getLoggedInUserId.
+/// Stub method for getLoggedInUserId.
 Future<String?> getLoggedInUserId({
   required String auth0Domain,
   required String auth0ClientId,
