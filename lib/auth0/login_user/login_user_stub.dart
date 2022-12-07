@@ -1,3 +1,4 @@
+// Stub method for logging in a user.
 Future<String?> loginUser({
   required String auth0Domain,
   required String auth0ClientId,

@@ -2,6 +2,7 @@ import 'package:auth0_flutter/auth0_flutter.dart';
 import 'package:auth0_flutter2/auth0/auth0.dart';
 import 'package:auth0_flutter2/auth0/init_auth0/init_auth0_mobile.dart';
 
+// Logs in user (via universal login) on mobile.
 Future<String?> loginUser({
   required String auth0Domain,
   required String auth0ClientId,

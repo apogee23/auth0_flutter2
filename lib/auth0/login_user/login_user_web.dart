@@ -4,6 +4,7 @@ import 'package:auth0_flutter2/auth0/init_auth0/init_auth0_web.dart';
 import 'package:auth0_flutter2/auth0/auth0_flutter_web/auth0_flutter_web.dart'
     as auth0_web;
 
+// Logs in user (via universal login) on web.
 Future<String?> loginUser({
   required String auth0Domain,
   required String auth0ClientId,

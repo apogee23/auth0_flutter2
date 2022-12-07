@@ -2,6 +2,7 @@ name: auth0_flutter2
 description: A Flutter package to easily integrate Auth0 into Android, iOS, and Web Flutter apps.
 version: 0.0.1
 homepage:
+repository: https://github.com/apogee23/auth0_flutter2
 
 environment:
   sdk: '>=2.18.5 <3.0.0'
@@ -13,7 +14,7 @@ dependencies:
   
   auth0_flutter: ^1.0.1
   universal_html: ^2.0.8
-  # meta: ^1.2.4
+  meta: ^1.2.4
   js: ^0.6.3
 
 dev_dependencies:
