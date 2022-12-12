@@ -1,6 +1,6 @@
 name: auth0_flutter2
 description: Cross-platform Auth0 authentication integration, in minutes, for mobile and web.
-version: 0.0.6
+version: 0.0.7
 homepage:
 repository: https://github.com/apogee23/auth0_flutter2
 

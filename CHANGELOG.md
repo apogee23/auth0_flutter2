@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.0.7] - 12.12.2022
+
+* Use refresh tokens and local storage for Web authentication.
+
 ## [0.0.6] - 11.12.2022
 
 * Refactor web login to use a redirect instead of a popup. Add additional property to Auth0Flutter2 class, redirectUri, to support new web login functionality.

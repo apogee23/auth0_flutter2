@@ -13,8 +13,8 @@ Future<auth0_web.Auth0> initAuth0Web({
         domain: auth0Domain,
         client_id: auth0ClientId,
         redirect_uri: redirectUri,
-        // useRefreshTokens: true,
-        // cacheLocation: "localstorage",
+        useRefreshTokens: true,
+        cacheLocation: "localstorage",
       ),
     );
   } catch (e) {
