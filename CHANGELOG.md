@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.0.8] - 12.12.2022
+
+* Login with popup on mobile web, login with redirect on desktop web.
+
 ## [0.0.7] - 12.12.2022
 
 * Use refresh tokens and local storage for Web authentication.

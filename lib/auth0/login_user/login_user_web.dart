@@ -2,6 +2,7 @@ import 'package:auth0_flutter2/auth0/auth0.dart';
 import 'package:auth0_flutter2/auth0/init_auth0/init_auth0_web.dart';
 import 'package:auth0_flutter2/auth0/auth0_flutter_web/auth0_flutter_web.dart'
     as auth0_web;
+import 'package:flutter/foundation.dart';
 
 /// Logs in user (via universal login) on web.
 Future<String?> loginUser({
@@ -25,7 +26,13 @@ Future<String?> loginUser({
 
     // If user is not logged in, direct to auth page.
     if (user == null) {
-      await auth0.loginWithRedirect(redirectUri: redirectUri ?? "");
+      // Popup for mobile, redirect for desktop.
+      if (defaultTargetPlatform == TargetPlatform.iOS ||
+          defaultTargetPlatform == TargetPlatform.android) {
+        await auth0.loginWithPopup();
+      } else {
+        await auth0.loginWithRedirect(redirectUri: redirectUri ?? "");
+      }
 
       // Check again if user is logged in (after auth attempt).
       final nowUser = await getLoggedInUserId(
