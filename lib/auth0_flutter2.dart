@@ -1,6 +1,7 @@
 library auth0_flutter2;
 
 import 'package:auth0_flutter2/auth0/auth0.dart' as auth02;
+import 'package:url_strategy/url_strategy.dart' as url_strategy;
 
 /// Base class of the package which is always staticly referenced.
 class Auth0Flutter2 {
@@ -42,6 +43,19 @@ class Auth0Flutter2 {
     return instance._auth0ClientId!;
   }
 
+  /// Sets the Auth0 ClientId.
+  static set redirectUri(String value) {
+    if (value == instance._redirectUri) {
+      return;
+    }
+    instance._redirectUri = value;
+  }
+
+  /// Retrieves the Auth0 ClientId.
+  static String get redirectUri {
+    return instance._redirectUri!;
+  }
+
   /// The instance of [Auth0Flutter2].
   static final Auth0Flutter2 instance = Auth0Flutter2._();
 
@@ -51,12 +65,16 @@ class Auth0Flutter2 {
   /// The Auth0 client ID of the application.
   String? _auth0ClientId;
 
+  /// For web applications, the redirect URL after login.
+  String? _redirectUri;
+
   /// Fetches the currently authenticated user ID.
   /// Returns null if no user is authenticated.
   Future<String?> getLoggedInUserId() async {
     return await auth02.getLoggedInUserId(
       auth0Domain: auth0Domain,
       auth0ClientId: auth0ClientId,
+      redirectUri: redirectUri,
     );
   }
 
@@ -68,8 +86,24 @@ class Auth0Flutter2 {
     return await auth02.loginUser(
       auth0Domain: auth0Domain,
       auth0ClientId: auth0ClientId,
-      afterLogin: afterLogin,
+      redirectUri: redirectUri,
+      // afterLogin: afterLogin,
     );
+  }
+
+  /// Fetches the currently authenticated user ID.
+  /// Returns null if no user is authenticated.
+  Future<bool> handleWebLoginCallback(String? url) async {
+    try {
+      return await auth02.handleRedirectCallback(
+        auth0Domain: auth0Domain,
+        auth0ClientId: auth0ClientId,
+        redirectUri: redirectUri,
+        url: url,
+      );
+    } catch (e) {
+      throw Exception(e);
+    }
   }
 
   /// Logs out current user.
@@ -78,5 +112,14 @@ class Auth0Flutter2 {
       auth0Domain: auth0Domain,
       auth0ClientId: auth0ClientId,
     );
+  }
+
+  // Wrapper of url_strategy package "setPathUrlStrategy" method.
+  static Future<void> setPathUrlStrategy() async {
+    try {
+      return url_strategy.setPathUrlStrategy();
+    } catch (e) {
+      throw Exception(e);
+    }
   }
 }

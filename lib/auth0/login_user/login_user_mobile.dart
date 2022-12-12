@@ -6,6 +6,7 @@ import 'package:auth0_flutter2/auth0/init_auth0/init_auth0_mobile.dart';
 Future<String?> loginUser({
   required String auth0Domain,
   required String auth0ClientId,
+  String? redirectUri,
   Future<void> Function()? afterLogin,
 }) async {
   Auth0 auth0 = initAuth0Mobile(

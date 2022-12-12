@@ -28,6 +28,34 @@ Add the Auth0 Javascript SPA (Single Page Application) library.
 <script src="https://cdn.auth0.com/js/auth0-spa-js/1.13/auth0-spa-js.production.js"></script>
 ```
 
+In main.dart, add a method to handle Web login callbacks.
+
+```dart
+  @override
+  void initState() {
+    checkForRedirectCallback();
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    .....
+  }
+
+  Future<void> checkForRedirectCallback() async {
+    // Check for login callback state.
+    var redirectCallbackHandled =
+        await Auth0Flutter2.instance.handleWebLoginCallback(
+      Uri.base.toString(),
+    );
+
+    // If callback was able to be processed, do something.
+    if (redirectCallbackHandled) {
+      // DO SOMETHING...
+    }
+  }
+```
+
 ## Example
 
 Import the library.
@@ -40,8 +68,14 @@ Then initialize the `Auth0Flutter2` class in your `main()` method.
 
 ```dart
 void main() {
-  Auth0Flutter2.auth0Domain = Globals.AUTH0_DOMAIN;
-  Auth0Flutter2.auth0ClientId = Globals.AUTH0_CLIENT_ID;
+  Auth0Flutter2.auth0Domain = "AUTH0_DOMAIN";
+  Auth0Flutter2.auth0ClientId = "AUTH0_CLIENT_ID";
+  Auth0Flutter2.redirectUri = "YOUR_APP_REDIRECT_URI";
+
+  // Set the URL strategy for our web app. Removes 
+  // trailing hash(#) to ensure login callbacks
+  // will be captured and processed correctly.
+  Auth0Flutter2.setPathUrlStrategy();
 
   runApp(const MyApp());
 }

@@ -8,8 +8,8 @@ Future<void> logoutUser({
   required String auth0ClientId,
 }) async {
   auth0_web.Auth0 auth0 = await initAuth0Web(
-    auth0Domain,
-    auth0ClientId,
+    auth0Domain: auth0Domain,
+    auth0ClientId: auth0ClientId,
   );
 
   try {

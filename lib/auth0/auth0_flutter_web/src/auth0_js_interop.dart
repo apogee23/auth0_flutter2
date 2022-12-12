@@ -21,8 +21,12 @@ Future<Auth0> createAuth0Client(Auth0ClientOptions options) {
 @JS()
 abstract class _Auth0JS {
   @JS()
+  external _Promise<void> loginWithRedirect(RedirectLoginOptions options);
+  @JS()
   external _Promise<void> loginWithPopup(
       PopupLoginOptions options, PopupConfigOptions config);
+  @JS()
+  external _Promise<void> handleRedirectCallback(String url);
   @JS()
   external void logout(LogoutOptions options);
   @JS()
@@ -46,11 +50,21 @@ class Auth0 {
 
   Auth0._(this._auth0js);
 
+  /// Calls Auth0 loginWithRedirect method.
+  Future<String?> loginWithRedirect({String redirectUri = ''}) async {
+    return await promiseToFuture(_auth0js
+        .loginWithRedirect(RedirectLoginOptions(redirect_uri: redirectUri)));
+  }
+
   /// Calls Auth0 loginWithPopup method.
   Future<void> loginWithPopup(
       {PopupLoginOptions? options, PopupConfigOptions? config}) {
     return promiseToFuture(
         _auth0js.loginWithPopup(options ?? jsify({}), config ?? jsify({})));
+  }
+
+  Future<void> handleRedirectCallback(String url) {
+    return promiseToFuture(_auth0js.handleRedirectCallback(url));
   }
 
   /// Calls Auth0 logout method.

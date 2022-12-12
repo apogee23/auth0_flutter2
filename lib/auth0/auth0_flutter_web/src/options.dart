@@ -47,7 +47,7 @@ class Auth0ClientOptions extends BaseLoginOptions {
   external String get domain;
   external String get issuer;
   external String get client_id;
-  external String get redirect_url;
+  external String get redirect_uri;
   external num get leeway;
   external Object get cacheLocation;
   external bool get useRefreshTokens;
@@ -71,7 +71,7 @@ class Auth0ClientOptions extends BaseLoginOptions {
       @required String domain,
       String issuer,
       @required String client_id,
-      String redirect_url,
+      String? redirect_uri,
       num leeway,
       Object cacheLocation,
       bool useRefreshTokens,
@@ -80,6 +80,13 @@ class Auth0ClientOptions extends BaseLoginOptions {
       bool useCookiesForTransactions,
       AdvancedOptions advancedOptions,
       num sessionCheckExpiryDays});
+}
+
+@JS()
+@anonymous
+class RedirectLoginOptions {
+  external factory RedirectLoginOptions({String redirect_uri});
+  external String get redirect_uri;
 }
 
 @JS()

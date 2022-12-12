@@ -6,10 +6,12 @@ import 'login_user_stub.dart'
 Future<String?> loginUser({
   required String auth0Domain,
   required String auth0ClientId,
+  String? redirectUri,
   Future<void> Function()? afterLogin,
 }) =>
     impl.loginUser(
       auth0Domain: auth0Domain,
       auth0ClientId: auth0ClientId,
+      redirectUri: redirectUri,
       afterLogin: afterLogin,
     );
