@@ -6,6 +6,7 @@ import 'package:auth0_flutter2/auth0/init_auth0/init_auth0_mobile.dart';
 Future<String?> loginUser({
   required String auth0Domain,
   required String auth0ClientId,
+  String? scheme,
   String? redirectUri,
   Future<void> Function()? afterLogin,
 }) async {
@@ -23,7 +24,7 @@ Future<String?> loginUser({
 
     // If user is not logged in, direct to auth page.
     if (user == null) {
-      await auth0.webAuthentication().login();
+      await auth0.webAuthentication(scheme: scheme).login();
 
       // Check again if user is logged in (after auth attempt).
       final nowUser = await getLoggedInUserId(

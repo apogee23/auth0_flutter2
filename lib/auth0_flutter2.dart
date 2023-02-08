@@ -56,6 +56,19 @@ class Auth0Flutter2 {
     return instance._redirectUri!;
   }
 
+  /// Sets the custom scheme.
+  static set scheme(String value) {
+    if (value == instance._scheme) {
+      return;
+    }
+    instance._scheme = value;
+  }
+
+  /// Retrieves the custom scheme.
+  static String get scheme {
+    return instance._scheme!;
+  }
+
   /// The instance of [Auth0Flutter2].
   static final Auth0Flutter2 instance = Auth0Flutter2._();
 
@@ -67,6 +80,9 @@ class Auth0Flutter2 {
 
   /// For web applications, the redirect URL after login.
   String? _redirectUri;
+
+  /// For Android applications, the custom scheme.
+  String? _scheme;
 
   /// Fetches the currently authenticated user ID.
   /// Returns null if no user is authenticated.
@@ -87,6 +103,7 @@ class Auth0Flutter2 {
       auth0Domain: auth0Domain,
       auth0ClientId: auth0ClientId,
       redirectUri: redirectUri,
+      scheme: scheme,
       // afterLogin: afterLogin,
     );
   }
@@ -111,6 +128,7 @@ class Auth0Flutter2 {
     return auth02.logoutUser(
       auth0Domain: auth0Domain,
       auth0ClientId: auth0ClientId,
+      scheme: scheme,
     );
   }
 

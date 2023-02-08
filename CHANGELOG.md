@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.0.9] - 02.07.2023
+
+* Add custom scheme for Android.
+
 ## [0.0.8] - 12.12.2022
 
 * Login with popup on mobile web, login with redirect on desktop web.

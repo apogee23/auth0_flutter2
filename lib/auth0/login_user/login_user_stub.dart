@@ -2,6 +2,7 @@
 Future<String?> loginUser({
   required String auth0Domain,
   required String auth0ClientId,
+  String? scheme,
   String? redirectUri,
   Future<void> Function()? afterLogin,
 }) =>
