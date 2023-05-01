@@ -57,7 +57,7 @@ class Auth0Flutter2 {
   }
 
   /// Sets the custom scheme.
-  static set scheme(String value) {
+  static set scheme(String? value) {
     if (value == instance._scheme) {
       return;
     }
@@ -65,8 +65,8 @@ class Auth0Flutter2 {
   }
 
   /// Retrieves the custom scheme.
-  static String get scheme {
-    return instance._scheme!;
+  static String? get scheme {
+    return instance._scheme;
   }
 
   /// The instance of [Auth0Flutter2].
@@ -128,6 +128,7 @@ class Auth0Flutter2 {
     return auth02.logoutUser(
       auth0Domain: auth0Domain,
       auth0ClientId: auth0ClientId,
+      redirectUri: redirectUri,
       scheme: scheme,
     );
   }

@@ -6,10 +6,12 @@ import 'logout_user_stub.dart'
 Future<void> logoutUser({
   required String auth0Domain,
   required String auth0ClientId,
+  required String redirectUri,
   String? scheme,
 }) =>
     impl.logoutUser(
       auth0Domain: auth0Domain,
       auth0ClientId: auth0ClientId,
+      redirectUri: redirectUri,
       scheme: scheme,
     );

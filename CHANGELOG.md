@@ -1,5 +1,25 @@
 # Changelog
 
+## [0.0.15] - 05.02.2023
+
+* Additional support for web-based logout redirect.
+
+## [0.0.14] - 05.01.2023
+
+* Implement redirect URI for web-based logout redirect.
+
+## [0.0.12] - 02.07.2023
+
+* Small bug fix to support iOS.
+
+## [0.0.11] - 02.07.2023
+
+* Small bug fix to support iOS.
+
+## [0.0.10] - 02.07.2023
+
+* Small bug fix to support iOS.
+
 ## [0.0.9] - 02.07.2023
 
 * Add custom scheme for Android.

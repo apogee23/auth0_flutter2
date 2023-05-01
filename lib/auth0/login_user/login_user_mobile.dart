@@ -24,7 +24,9 @@ Future<String?> loginUser({
 
     // If user is not logged in, direct to auth page.
     if (user == null) {
-      await auth0.webAuthentication(scheme: scheme).login();
+      scheme != null
+          ? await auth0.webAuthentication(scheme: scheme).login()
+          : await auth0.webAuthentication().login();
 
       // Check again if user is logged in (after auth attempt).
       final nowUser = await getLoggedInUserId(
