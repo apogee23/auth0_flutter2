@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.0.15] - 08.10.2023
+
+* Upgrade to latest Auth0 dependency.
+
 ## [0.0.15] - 05.02.2023
 
 * Additional support for web-based logout redirect.
